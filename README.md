@@ -1,4 +1,9 @@
 > 출처 : https://www.youtube.com/watch?v=9wrHxqI6zuM&t=714s
+- 기본 설치
+```console
+> npm install redux react-redux
+> npm install @reduxjs/toolkit
+```
 - React Redux Toolkit 설명 추가 및 소스 분석
   - configureStore로 store를 만듬   
   - createSlice로 작은 store를 만듬   
