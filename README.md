@@ -5,3 +5,6 @@
   - 하지만, Context는 꼭 필요할 때만!
     - Context를 사용하면 컴포넌트를 재사용하기 어려워 질 수 있음
     - Prop drilling을 피하기 위한 목적이라면 Component Composition(컴포넌트 합성)을 먼저 고려해보자
+- 예제
+  - 1차 : 페이지들 가운데에 Page.jsx를 생성하여 props를 분배
+  - 
