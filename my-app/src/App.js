@@ -1,9 +1,15 @@
 import './App.css';
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const countRef = useRef(0); // {current:0}, 접근 : countRef.current
+
+  useEffect(() => {
+    countRef.current = countRef.current + 1;
+    console.log(`렌더 카운트 : ${countRef.current}`);
+  });
 
   const increaseCountState = () => {
     setCount(count + 1);
@@ -11,9 +17,8 @@ function App() {
 
   return (
     <div>
-      <p>State : {count}</p>
-      <button onClick={increaseCountState}>State 올려</button>
-
+      <p>count : {count}</p>
+      <button onClick={increaseCountState}>Count 올려</button>
     </div>
   );
 }
