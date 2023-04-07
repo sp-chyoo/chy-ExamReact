@@ -1,24 +1,17 @@
 import './App.css';
-import React, {useState, useRef, useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 
 function App() {
-
-  const [count, setCount] = useState(1);
-  const countRef = useRef(0); // {current:0}, 접근 : countRef.current
+  const inputRef = useRef();
 
   useEffect(() => {
-    countRef.current = countRef.current + 1;
-    console.log(`렌더 카운트 : ${countRef.current}`);
-  });
-
-  const increaseCountState = () => {
-    setCount(count + 1);
-  };
+    inputRef.current.focus();
+  },[]);
 
   return (
     <div>
-      <p>count : {count}</p>
-      <button onClick={increaseCountState}>Count 올려</button>
+      <input ref={inputRef} type="text" placeholder="user name"></input>
+      <button>로그인</button>
     </div>
   );
 }
