@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import './App.css';
+import Page from './components/Page';
 
 function App() {
-  return (
-    <div>
+  const [isDark, setIsDark] = useState(false);
 
-    </div>
-  );
+  return <Page isDark={isDark} setIsDark={setIsDark}/>
 }
 
 export default App;
+ 
