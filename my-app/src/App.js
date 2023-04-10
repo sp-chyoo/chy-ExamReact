@@ -1,17 +1,37 @@
 import './App.css';
-import {useEffect, useRef} from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 function App() {
-  const inputRef = useRef();
+
+  const [number, setNumber] = useState(0);
+  const [isKorea, setIsKorea] = useState(true);
+
+  const location = useMemo(()=>{
+    return {
+      country: isKorea ? '한국' : '외국',
+    }
+  }, [isKorea]);
+  
+  // {
+  //   country: isKorea ? '한국' : '외국',
+  // };
 
   useEffect(() => {
-    inputRef.current.focus();
-  },[]);
+    console.log("useEffect 호출");
+  },[location]);
 
   return (
     <div>
-      <input ref={inputRef} type="text" placeholder="user name"></input>
-      <button>로그인</button>
+      <h2>하루에 몇끼 먹어요?</h2>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(e.target.value)}>
+      </input>
+      <hr />
+      <h2>어느 나라에 있어요?</h2>
+      <p>나라 : {location.country}</p>
+      <button onClick={()=>setIsKorea(!isKorea)}>비행기 타자</button>
     </div>
   );
 }
