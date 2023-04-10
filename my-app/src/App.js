@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import './App.css';
+
 import React, { useState, useMemo, useEffect } from 'react';
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
       <button onClick={()=>setIsKorea(!isKorea)}>비행기 타자</button>
     </div>
   );
-}
 
+}
+ 
 export default App;
+ 
