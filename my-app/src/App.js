@@ -1,39 +1,46 @@
 import { useState } from 'react';
 import './App.css';
+import { useCallback, useState } from 'react';
+import Box from './Box';
 
 import React, { useState, useMemo, useEffect } from 'react';
 
 function App() {
+  const [size, setSizes] = useState(100);
+  const [isDark, setIsDark] = useState(false);
 
-  const [number, setNumber] = useState(0);
-  const [isKorea, setIsKorea] = useState(true);
-
-  const location = useMemo(()=>{
+  // 버튼 클릭 시 영향을 받지 않도록 수정
+  const createBoxStyle = useCallback(() => {
     return {
-      country: isKorea ? '한국' : '외국',
-    }
-  }, [isKorea]);
-  
-  // {
-  //   country: isKorea ? '한국' : '외국',
+          backgroundColor: 'pink',
+          width: `${size}px`,
+          height: `${size}px`
+        };
+  }, [size]);
+
+  // const createBoxStyle = () => {
+  //   return {
+  //     backgroundColor: 'pink',
+  //     width: `${size}px`,
+  //     height: `${size}px`
+  //   };
   // };
 
-  useEffect(() => {
-    console.log("useEffect 호출");
-  },[location]);
-
   return (
-    <div>
-      <h2>하루에 몇끼 먹어요?</h2>
+    <div 
+      style={{
+        background: isDark ? 'black' : 'white' ,
+      }}
+    >
       <input
         type="number"
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}>
+        value={size}
+        onChange={(e) => {setSizes(e.target.value)}}
+      >
       </input>
-      <hr />
-      <h2>어느 나라에 있어요?</h2>
-      <p>나라 : {location.country}</p>
-      <button onClick={()=>setIsKorea(!isKorea)}>비행기 타자</button>
+      <button onClick={() => setIsDark(!isDark)}>Change Theme</button>
+      <Box createBoxStyle={createBoxStyle}></Box>
+
     </div>
   );
 
