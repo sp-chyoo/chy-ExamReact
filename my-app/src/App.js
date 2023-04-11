@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './App.css';
 import { useCallback, useState } from 'react';
 import Box from './Box';
+
+import React, { useState, useMemo, useEffect } from 'react';
 
 function App() {
   const [size, setSizes] = useState(100);
@@ -37,8 +40,11 @@ function App() {
       </input>
       <button onClick={() => setIsDark(!isDark)}>Change Theme</button>
       <Box createBoxStyle={createBoxStyle}></Box>
+
     </div>
   );
-}
 
+}
+ 
 export default App;
+ 
